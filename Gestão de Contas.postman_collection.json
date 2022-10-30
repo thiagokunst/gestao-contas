@@ -1,0 +1,314 @@
+{
+	"info": {
+		"_postman_id": "ed7ada88-8864-480c-810c-c1dc16dc3430",
+		"name": "Gestão de Contas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Criar Conta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "   {\r\n        \"pessoaRequest\": {\r\n            \"id\": 1\r\n        },\r\n        \"saldo\": 0,\r\n        \"limiteSaqueDiario\": 10000,\r\n        \"flagAtivo\": true,\r\n        \"tipoConta\": 1\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/conta",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"conta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bloquear Conta",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/conta/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"conta",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Depositar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"valor\": 1500\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/conta/deposito/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"conta",
+						"deposito",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sacar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"valor\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/conta/saque/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"conta",
+						"saque",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Saldo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/conta/saldo/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"conta",
+						"saldo",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Extrato",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/transacao/extrato/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transacao",
+						"extrato",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar extrato por período",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/transacao/extrato-periodo/1?inicio=2022-10-29 00:00:00&fim=2022-10-30 23:59:00",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transacao",
+						"extrato-periodo",
+						"1"
+					],
+					"query": [
+						{
+							"key": "inicio",
+							"value": "2022-10-29 00:00:00"
+						},
+						{
+							"key": "fim",
+							"value": "2022-10-30 23:59:00"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar todas as contas por CPF",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cpf\": \"39477766642\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/conta/buscar-por-cpf",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"conta",
+						"buscar-por-cpf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar saques por período",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/transacao/saques-periodo/1?inicio=2022-10-28 00:00:00&fim=2022-10-29 23:59:00",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transacao",
+						"saques-periodo",
+						"1"
+					],
+					"query": [
+						{
+							"key": "inicio",
+							"value": "2022-10-28 00:00:00"
+						},
+						{
+							"key": "fim",
+							"value": "2022-10-29 23:59:00"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar depositos por período",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/transacao/depositos-periodo/1?inicio=2022-10-28 00:00:00&fim=2022-10-29 23:59:00",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transacao",
+						"depositos-periodo",
+						"1"
+					],
+					"query": [
+						{
+							"key": "inicio",
+							"value": "2022-10-28 00:00:00"
+						},
+						{
+							"key": "fim",
+							"value": "2022-10-29 23:59:00"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar todos os saques",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/transacao/saques/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transacao",
+						"saques",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar todos os saques depósitos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/transacao/depositos/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transacao",
+						"depositos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

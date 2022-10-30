@@ -1,78 +1,37 @@
 
-### Desafio Dock Tech de Seleção 
-Olá, queremos convidá-lo a participar de nosso desafio de seleção.  Pronto para participar? Seu trabalho será visto por nosso time e você receberá ao final um feedback sobre o que achamos do seu trabalho. Não é legal?
+### Sobre
 
-### Sobre a oportunidade 
-A vaga é para software engineer, temos vagas com diversos níveis de senioridade e para cada um deles utilizaremos critérios específicos considerando esse aspecto, combinado? 
-Se você for aprovado nesta etapa, será convidado para uma entrevista final com nosso time de especialistas.
+Este projeto consiste em uma API de Gestão de Contas\
+A documentação se encontra em http://localhost:8080/ \
+Uma collection no Postman também foi disponibilizada para facilitar os testes, para utilizá-la basta importar o `Gestão de Contas.postman_collection.json` em seu Postman \
+São utilizados dois containers Docker, um para a aplicação e outro para o SQL Server 2022
 
-### Desafio Técnico
-  Nós trabalhamos com meios de pagamento e nada melhor que um bom sistema para gestão de contas:
-  
-  - Pré-requisitos:
-    ```
-    * Desenvolver os recursos em API Rest que realizam operações bancárias com a entidade conta a seguir:
-    ```
-    | Contas | Tipo |
-    |-|-|
-    | idConta | Numérico |
-    | idPessoa | Numérico |
-    | saldo | Monetário |
-    | limiteSaqueDiario | Monetário |
-    | flagAtivo | Condicional |
-    | tipoConta | Numérido |
-    | dataCriacao | Data |
+---
+### Tecnologias Utilizadas
 
-    ```
-    * Tabela de transações realizadas na conta
-    ```
-    | Transacoes | Tipo |
-    |-|-|
-    | idTransacao | Numérico |
-    | idConta | Numérico |
-    | valor | Monetário |
-    | dataTransacao | Data |
+- JDK 17
+- Maven 4.0
+- Spring Boot 2.7.5
+- SQL Server 2022
+- Swagger
+- Flyway
+- Lombok
+- Docker
 
-    ```
-    * P.S.: Não é necessário realizar operações com a tabela pessoa, mas é necessária a criação da tabela para mapeamento da relação com a conta e enviar script de criação de pelo menos uma pessoa.
-    ```
+---
 
-    | Pessoas | Tipo |
-    |-|-|
-    | idPessoa | Numérico |
-    | nome | Texto |
-    | cpf | Texto |
-    | dataNascimento | Data |    
+### Instruções para montar o ambiente de desenvolvimento
 
-  - O que esperamos como escopo mínimo:
-    ```
-    * Implementar path que realiza a criação de uma conta;
-    * Implementar path que realiza operação de depósito em uma conta;
-    * Implementar path que realiza operação de consulta de saldo em determinada conta;
-    * Implementar path que realiza operação de saque em uma conta;
-    * Implementar path que realiza o bloqueio de uma conta;
-    * Implementar path que recupera o extrato de transações de uma conta;
-    ```
-  - O que será diferencial:
-    ```
-    * Implementar extrato por período;
-    * Elaborar manual de execução;
-    * Elaborar documentação javadoc;
-    * Elaborar testes;
-    * Prazo de entrega;
-    ```
-    
-  - O que vamos avaliar:
-    ```
-    * Seu código; 
-    * Script de banco;
-    * Organização;
-    * Boas práticas;
-    * Diferenciais;    
-    ```
+1. Certifique-se de que o Maven e o Docker estão instalados em sua máquina.
+2. `docker-compose build` (para buildar as imagens contidas no docker-compose.yml)
+3. `docker-compose up` (para criar e executar os containers)
+4. Acesse http://localhost:8080/ para consultar a documentação ou a collection do Postman
 
+---
 
-### Instruções
-      1. Faça o fork do desafio;
-      2. Desenvolva. Você terá até 3 (três) dias a partir da data do envio do desafio; 
-      3. Envie um e-mail para arthur.azevedo@dock.tech notificando a finalização do desafio e o link do repositório para validação.
+### Instruções de utilização da API
+
+Uma pessoa com o CPF 39477766642 foi cadastrada na tabela pessoas.\
+Utilize esse CPF para criar uma conta\
+No retorno da criação da conta, você receberá o idConta, utlize esse valor para fazer outras operações como depósito, saque, consulta de extrato.
+
