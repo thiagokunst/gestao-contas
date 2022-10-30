@@ -1,0 +1,1 @@
+INSERT INTO dbo.pessoas (nome, cpf, data_nascimento) VALUES ('Thiago', '39477766642', '1998-03-20')
