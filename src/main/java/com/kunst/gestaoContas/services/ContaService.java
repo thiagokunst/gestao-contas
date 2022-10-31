@@ -56,10 +56,10 @@ public class ContaService {
     public ResponseEntity<Object> depositar(TransacaoRequest transacaoRequest, Long id){
 
         if (contaRepository.findById(id).isEmpty()){
-            return new ResponseEntity<>("Conta não encontrada", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Conta não encontrada", HttpStatus.NOT_FOUND);
         }
 
-        Conta conta = contaRepository.findById(id).get(); // lançar erro de conta não existente
+        Conta conta = contaRepository.findById(id).get();
 
         if(!conta.isFlagAtivo()){
             return new ResponseEntity<>("Essa conta está bloqueada", HttpStatus.BAD_REQUEST);
@@ -80,7 +80,7 @@ public class ContaService {
 
     public ResponseEntity<Object> sacar(TransacaoRequest transacaoRequest, Long id) {
         if (contaRepository.findById(id).isEmpty()){
-            return new ResponseEntity<>("Conta não encontrada", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Conta não encontrada", HttpStatus.NOT_FOUND);
         }
         Conta conta = contaRepository.findById(id).get();
 
@@ -111,7 +111,7 @@ public class ContaService {
     }
     public ResponseEntity<Object> consultarSaldo(Long id) {
         if (contaRepository.findById(id).isEmpty()){
-            return new ResponseEntity<>("Conta não encontrada", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Conta não encontrada", HttpStatus.NOT_FOUND);
         }
         Conta conta = contaRepository.findById(id).get();
         SaldoResponse saldoResponse = new SaldoResponse(id, conta.getSaldo());

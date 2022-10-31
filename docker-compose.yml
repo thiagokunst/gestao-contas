@@ -21,7 +21,4 @@ services:
     depends_on:
       - "sqlserver"
     restart: "no"
-#    volumes:
-#      - ${postgresData}:/var/lib/postgresql/data
-#      - ${createTables}:/docker-entrypoint-initdb.d/create_tables.sql
-#      - ${fillTables}:/docker-entrypoint-initdb.d/fill_tables.sql
+    restart: "always"
