@@ -291,7 +291,7 @@
 			"response": []
 		},
 		{
-			"name": "Consultar todos os saques depósitos",
+			"name": "Consultar todos os depósitos",
 			"request": {
 				"method": "GET",
 				"header": [],
