@@ -4,11 +4,11 @@ import lombok.Data;
 
 @Data
 public class ContaResponse {
-    private Long idPessoa;
+    private String cpf;
     private Long idConta;
 
-    public ContaResponse(Long idPessoa, Long idConta) {
-        this.idPessoa = idPessoa;
+    public ContaResponse(String cpf, Long idConta) {
+        this.cpf = cpf;
         this.idConta = idConta;
     }
 }

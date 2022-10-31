@@ -27,10 +27,11 @@ public class ContaService {
     private TransacaoRepository transacaoRepository;
 
     public ResponseEntity<Object> criar(ContaRequest contaRequest){
-        if (pessoaRepository.findById(contaRequest.getPessoaRequest().getId()).isEmpty()){
+        if (pessoaRepository.findByCpf(contaRequest.getPessoaRequest().getCpf()).isEmpty()){
             return new ResponseEntity<>("Pessoa não encontrada", HttpStatus.BAD_REQUEST);
+
         }
-        Pessoa pessoa = pessoaRepository.findById(contaRequest.getPessoaRequest().getId()).get();
+        Pessoa pessoa = pessoaRepository.findByCpf(contaRequest.getPessoaRequest().getCpf()).get();
         Conta conta = new Conta();
         conta.setPessoa(pessoa);
         conta.setSaldo(contaRequest.getSaldo());
@@ -39,7 +40,7 @@ public class ContaService {
         conta.setTipoConta(contaRequest.getTipoConta());
 
         contaRepository.save(conta);
-        ContaResponse contaResponse = new ContaResponse(contaRequest.getPessoaRequest().getId(), conta.getIdConta());
+        ContaResponse contaResponse = new ContaResponse(contaRequest.getPessoaRequest().getCpf(), conta.getIdConta());
         return new ResponseEntity<>(contaResponse, HttpStatus.CREATED);
     }
 

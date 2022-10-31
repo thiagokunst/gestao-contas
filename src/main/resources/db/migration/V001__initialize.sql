@@ -9,6 +9,8 @@ CREATE TABLE pessoas(
     data_nascimento DATETIME NOT null
 );
 
+CREATE UNIQUE INDEX cpf_idx ON pessoas (cpf)
+
 CREATE TABLE contas(
     id INTEGER PRIMARY KEY IDENTITY(1, 1) NOT NULL,
     id_pessoa INTEGER NOT NULL,
